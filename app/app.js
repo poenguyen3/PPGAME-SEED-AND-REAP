@@ -12,20 +12,29 @@ var config = {
 switch (config.env) {
   case 'development': {
     app.get('/', function(req, res){
-      console.log("GET INDEX");
-      // res.sendFile(config.devDir + '/index.html');
+      res.sendFile(__dirname + config.devDir + '/index.html');
+    });
+    app.use(function(req, res) {
+      if (req._parsedUrl != null) {
+        res.sendFile(__dirname + config.devDir + req._parsedUrl.path);
+      }
     });
   }break;
   default: {
     app.get('/', function(req, res){
-      console.log("GET INDEX");
       res.sendFile(__dirname + config.devDir + '/index.html');
+    });
+    app.use(function(req, res) {
+      res.sendFile(__dirname + config.devDir + req._parsedUrl.path);
     });
   }
 }
 
 skio.on('connection', function(socket){
   console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected!');
+  });
 });
 
 
