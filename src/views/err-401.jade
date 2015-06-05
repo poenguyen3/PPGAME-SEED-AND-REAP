@@ -1,0 +1,12 @@
+include layouts/main-layout
+
+block container
+  #full-container.center
+    h1.center YOU NEED TO LOGIN MY FRIEND! :v
+    a.waves-effect.waves-light.btn-large(href='/login', style="background-color: #64b5f6")
+      i.mdi-communication-vpn-key.left
+      span TO LOGIN PAGE ...
+  script.
+    setTimeout(function(){
+      window.location.href = '/user/login';
+    }, 2000);

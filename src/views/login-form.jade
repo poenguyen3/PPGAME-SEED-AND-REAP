@@ -1,0 +1,28 @@
+extends layouts/main-layout.jade
+
+block vars
+  -title= 'PPGAME - login'
+
+block addition-style
+  link(href="css/login-form/login-form.css" rel="stylesheet")
+
+block container
+  .main-container.valign-wrapper
+    .container.v-align
+      #login.signin-card(ng-controller="user-login-form")
+        .logo-image
+          img(src='images/seed.gif', alt='Logo', title='Logo')
+        h1.display1 SEED AND REAP
+        form(action='/login', method='post', role='form')
+          .input-field.col.s12
+            input(id="user" type="text" name="username" class="validate")
+            label(for="user") Username
+          .input-field.col-s12
+            input(id="pass" type="password" name="password" class="validate")
+            label(for="pass") Password
+          #form-login-remember.form-group
+            .checkbox.checkbox-default
+              input#remember(type='checkbox', value='yes', alt='Remember me')
+              label(for='remember') Remember me
+          div.center
+            button.btn.btn-block.btn-info.ripple-effect(type='submit', name='Submit', alt='sign in') Sign in

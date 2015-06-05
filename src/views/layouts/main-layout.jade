@@ -1,8 +1,12 @@
 doctype html
 html
+  block vars
+    -title= 'PPGAME - SEED AND REAP'
   head
-    title Hello GULP
+    title=title
+    base(href="http://localhost:8888")
     include ../blocks/styles.jade
-  body
+    block addition-style
+  body(ng-app="seedreap")
     block container
     include ../blocks/scripts.jade
